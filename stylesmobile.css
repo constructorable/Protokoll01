@@ -2551,9 +2551,10 @@ input.no-spin {
 
 #wandfarbe,
 #wandfarbebad {
-    margin-left: 2rem;
-    width: 27rem;
+    margin-left: 0;
+    
 }
+
 
 #fussbodenkue,
 #fussbodenbad {
