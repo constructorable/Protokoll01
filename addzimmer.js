@@ -573,17 +573,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     </tr>
 
 
-                    <tr>
-    <td>Zimmerschlüssel vorhanden?</td>
-    <td class="select-cell" colspan="2">
-        <select id="zimm${count}-select"  style="margin-left:2rem;" name="schluessel-${count}" style="padding: 5px; min-width: 120px;">
-            <option value=""></option>
-            <option value="ja">Ja</option>
-            <option value="nein">Nein</option>
-        </select>
-    </td>
-    <td colspan="3"></td>
-</tr>
+
+
+
+
+           <tr>
+                                    <td>Zimmerschlüssel vorhanden?</td>
+                                    <td><input type="checkbox" id="keyYeszimm${count}"></td>
+                                    <td class="color1">ja</td>
+                                    <td><input type="checkbox" id="keyNozimm${count}"></td>
+                                    <td class="color1">nein</td>
+                                    <td></td>
+                                </tr>
+
+
+
 
 
                     <tr>
@@ -1071,3 +1075,5 @@ document.addEventListener('DOMContentLoaded', function () {
         updateGalerie(count);
     }
 });
+
+  
