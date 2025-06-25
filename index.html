@@ -35,65 +35,73 @@
 <body>
     <div class="container">
 
-        <div class="sticky">
+<div class="sticky">
+    <button id="openMenuModal" class="button menu-trigger">
+        <i class="fas fa-bars"></i>
+        <span class="button-text">Menü</span>
+    </button>
+    <button id="stylechange" class="button style-button">
+        <i class="fas fa-eye"></i>
+        <span class="button-text">Ansicht</span>
+    </button>
+</div>
 
-            <div class="menu">
-                <button id="toggleButtons" class="button">☰ Menü</button>
-                <button id="stylechange" class="button"><i class="fas fa-eye"></i></button>
-
-                <div class="develop" style="display:none;">
-
-                    <button id="savelocal" class="button"><i class="fas fa-save"></i></button>
-
-                    <button id="screenshot" class="button"><i class="fas fa-file-pdf"></i>PDF erstellen</button>
-                    <button id="mail" class="button"><i class="fas fa-envelope"></i>E-Mail öffnen</button>
-
-                    <button id="toggleAdvanced" class="button">Erweiterte Optionen ▼</button>
-
-                    <div class="advanced-options" style="display:none;">
-
-                        <button id="loadlocal" class="button">Laden</button>
-                        <button id="delete" class="button">Alle Eingaben löschen</button>
-                        <button id="export" class="button">Export <i class="fas fa-file-export"></i></button>
-                        <button id="import" class="button"><i class="fas fa-file-import"></i> Import</button>
-                    </div>
+<!-- Menu Modal -->
+<div id="menuModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3 class="modal-title">
+                <i class="fas fa-bars"></i>
+                Hauptmenü
+            </h3>
+            <button id="closeMenuModal" class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="modal-content">
+            <div class="menu-grid">
+                <!-- Hauptfunktionen -->
+                <div class="menu-section">
+                    <h4 class="section-title">Aktionen</h4>
+                    <button id="savelocal" class="menu-item-button">
+                        <i class="fas fa-save"></i>
+                        <span>Speichern</span>
+                    </button>
+                    <button id="screenshot" class="menu-item-button">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF erstellen</span>
+                    </button>
+                    <button id="mail" class="menu-item-button">
+                        <i class="fas fa-envelope"></i>
+                        <span>E-Mail öffnen</span>
+                    </button>
+                </div>
+                
+                <!-- Datenverwaltung -->
+                <div class="menu-section">
+                    <h4 class="section-title">Datenverwaltung</h4>
+                    <button id="loadlocal" class="menu-item-button">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Daten laden</span>
+                    </button>
+                    <button id="export" class="menu-item-button">
+                        <i class="fas fa-file-export"></i>
+                        <span>Daten exportieren</span>
+                    </button>
+                    <button id="import" class="menu-item-button">
+                        <i class="fas fa-file-import"></i>
+                        <span>Daten importieren</span>
+                    </button>
+                    <button id="delete" class="menu-item-button danger">
+                        <i class="fas fa-trash"></i>
+                        <span>alle aktuellen Formulareingaben löschen</span>
+                    </button>
                 </div>
             </div>
-
-            <script>
-                // Hauptmenü ein-/ausblenden
-                document.getElementById('toggleButtons').addEventListener('click', function () {
-                    const devDiv = document.querySelector('.develop');
-                    const toggleBtn = document.getElementById('toggleButtons');
-
-                    if (devDiv.style.display === 'none') {
-                        devDiv.style.display = 'block';
-                        toggleBtn.textContent = 'Menü ausblenden ☰';
-                    } else {
-                        devDiv.style.display = 'none';
-                        toggleBtn.textContent = '☰ Menü anzeigen';
-                        // Erweiterte Optionen ebenfalls ausblenden, wenn Hauptmenü geschlossen wird
-                        document.querySelector('.advanced-options').style.display = 'none';
-                        document.getElementById('toggleAdvanced').textContent = '☰ weitere Menüpunkte';
-                    }
-                });
-
-                // Erweiterte Optionen ein-/ausblenden
-                document.getElementById('toggleAdvanced').addEventListener('click', function () {
-                    const advancedDiv = document.querySelector('.advanced-options');
-                    const toggleAdvBtn = document.getElementById('toggleAdvanced');
-
-                    if (advancedDiv.style.display === 'none') {
-                        advancedDiv.style.display = 'block';
-                        toggleAdvBtn.textContent = ' ☰ weitere Menüpunkte ▲';
-                    } else {
-                        advancedDiv.style.display = 'none';
-                        toggleAdvBtn.textContent = ' ☰ weitere Menüpunkte ▼';
-                    }
-                });
-            </script>
-
         </div>
+    </div>
+</div>
 
 
 
@@ -338,7 +346,7 @@
                                     <td><input type="checkbox" id="016"></td>
                                 </tr>
 
-                                <tr>
+                                <!--     <tr>
                                     <td>Zimmerschlüssel vorhanden?</td>
                                     <td class="select-cell" colspan="2">
                                         <select id="keySelect" name="key_status"
@@ -349,7 +357,30 @@
                                         </select>
                                     </td>
                                     <td colspan="3"></td>
+                                </tr> -->
+
+                                <!--       <tr>
+                                    <td>Zimmerschlüssel vorhanden?</td>
+                                    <td class="checkbox-group" colspan="2">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="keyYes" name="key_status" value="j"> Ja
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="keyNo" name="key_status" value="n"> Nein
+                                        </label>
+                                    </td>
+                                    <td colspan="3"></td>
+                                </tr> -->
+
+                                <tr>
+                                    <td>Zimmerschlüssel vorhanden?</td>
+                                    <td><input type="checkbox" id="keyYes1"></td>
+                                    <td class="color1">ja</td>
+                                    <td><input type="checkbox" id="keyNo1"></td>
+                                    <td class="color1">nein</td>
+                                    <td></td>
                                 </tr>
+
 
                                 <tr>
                                     <td>Fenster / Beschläge / Glas</td>
@@ -421,7 +452,6 @@
                                     <td>Farbe der Wände</td>
                                     <td><input type="checkbox" id="043b"></td>
                                     <td class="color1">weiß oder →</td>
-
                                     <td colspan="3">
                                         <div class="input-wrapper02">
                                             <input type="text" id="wandfarbe" placeholder="" class="farbe-input"
@@ -429,6 +459,8 @@
                                         </div>
                                     </td>
                                 </tr>
+
+
 
                                 <tr>
                                     <td>Fliesenspiegel</td>
@@ -772,16 +804,12 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Schlüssel vorhanden?</td>
-                                    <td class="select-cell" colspan="2">
-                                        <select id="keySelect2" name="key_status"
-                                            style="padding: 5px; min-width: 120px;">
-                                            <option value=""></option>
-                                            <option value="j">Ja</option>
-                                            <option value="n">Nein</option>
-                                        </select>
-                                    </td>
-                                    <td colspan="3"></td>
+                                    <td>Zimmerschlüssel vorhanden?</td>
+                                    <td><input type="checkbox" id="keyYes2"></td>
+                                    <td class="color1">ja</td>
+                                    <td><input type="checkbox" id="keyNo2"></td>
+                                    <td class="color1">nein</td>
+                                    <td></td>
                                 </tr>
 
                                 <tr>
@@ -856,8 +884,9 @@
 
                                     <td colspan="3">
                                         <div class="input-wrapper02">
-                                        <input type="text" id="wandfarbebad" placeholder="" class="farbe-input"
-                                            autocomplete="off"></div>
+                                            <input type="text" id="wandfarbebad" placeholder="" class="farbe-input"
+                                                autocomplete="off">
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -1241,16 +1270,12 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Schlüssel vorhanden?</td>
-                                    <td class="select-cell" colspan="2">
-                                        <select id="keySelect3" name="key_status"
-                                            style="padding: 5px; min-width: 120px;">
-                                            <option value=""></option>
-                                            <option value="j">Ja</option>
-                                            <option value="n">Nein</option>
-                                        </select>
-                                    </td>
-                                    <td colspan="3"></td>
+                                    <td>Zimmerschlüssel vorhanden?</td>
+                                    <td><input type="checkbox" id="keyYes3"></td>
+                                    <td class="color1">ja</td>
+                                    <td><input type="checkbox" id="keyNo3"></td>
+                                    <td class="color1">nein</td>
+                                    <td></td>
                                 </tr>
 
                                 <tr>
@@ -1325,8 +1350,9 @@
 
                                     <td colspan="3">
                                         <div class="input-wrapper02">
-                                        <input type="text" id="wandfarbewc" placeholder="" class="farbe-input"
-                                            autocomplete="off"></div>
+                                            <input type="text" id="wandfarbewc" placeholder="" class="farbe-input"
+                                                autocomplete="off">
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -1713,18 +1739,7 @@
                                     <td><input type="checkbox" id="527"></td>
                                 </tr>
 
-                                <!--      <tr>
-                                    <td>Schlüssel vorhanden?</td>
-                                    <td class="select-cell" colspan="2">
-                                        <select id="keySelect3" name="key_status"
-                                            style="padding: 5px; min-width: 120px;">
-                                            <option value=""></option>
-                                            <option value="j">Ja</option>
-                                            <option value="n">Nein</option>
-                                        </select>
-                                    </td>
-                                    <td colspan="3"></td>
-                                </tr> -->
+
 
                                 <tr>
                                     <td>Klingel / Türöffner / Sprechanlage</td>
@@ -1802,8 +1817,9 @@
 
                                     <td colspan="3">
                                         <div class="input-wrapper02">
-                                        <input type="text" id="wandfarbeflur" placeholder="" class="farbe-input"
-                                            autocomplete="off"></div>
+                                            <input type="text" id="wandfarbeflur" placeholder="" class="farbe-input"
+                                                autocomplete="off">
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -2003,16 +2019,12 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Schlüssel vorhanden?</td>
-                                    <td class="select-cell" colspan="2">
-                                        <select id="keySelect4" name="key_status"
-                                            style="padding: 5px; min-width: 120px;">
-                                            <option value=""></option>
-                                            <option value="j">Ja</option>
-                                            <option value="n">Nein</option>
-                                        </select>
-                                    </td>
-                                    <td colspan="3"></td>
+                                    <td>Zimmerschlüssel vorhanden?</td>
+                                    <td><input type="checkbox" id="keyYes4"></td>
+                                    <td class="color1">ja</td>
+                                    <td><input type="checkbox" id="keyNo4"></td>
+                                    <td class="color1">nein</td>
+                                    <td></td>
                                 </tr>
 
                                 <tr>
@@ -2091,8 +2103,9 @@
 
                                     <td colspan="3">
                                         <div class="input-wrapper02">
-                                        <input type="text" id="wandfarbeabstell" placeholder="" class="farbe-input"
-                                            autocomplete="off"></div>
+                                            <input type="text" id="wandfarbeabstell" placeholder="" class="farbe-input"
+                                                autocomplete="off">
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -2706,3 +2719,5 @@
 </body>
 
 </html>
+
+ 
