@@ -270,3 +270,131 @@ document.addEventListener('DOMContentLoaded', function() {
         landlordCtx.clearRect(0, 0, landlordCanvas.width, landlordCanvas.height);
     });
 });
+
+
+
+
+
+
+
+
+
+// Vereinfachte Modal Funktionalität
+function initializeMenuModal() {
+    const modal = document.getElementById('menuModal');
+    const openButton = document.getElementById('openMenuModal');
+    const closeButton = document.getElementById('closeMenuModal');
+    
+    // Modal öffnen
+    openButton.addEventListener('click', function() {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    // Modal schließen
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    
+    closeButton.addEventListener('click', closeModal);
+    
+    // Modal schließen bei Klick außerhalb
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Modal schließen mit ESC-Taste
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+    
+    // Menu-Item-Buttons Event Listener - ERWEITERT
+    const menuButtons = document.querySelectorAll('.menu-item-button');
+    menuButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log(`Button clicked: ${this.id}`);
+            
+            // Spezifische Aktionen für jeden Button
+            switch(this.id) {
+                case 'savelocal':
+                    if (window.promptSaveName) {
+                        window.promptSaveName();
+                    }
+                    break;
+                case 'loadlocal':
+                    if (window.showSavedStates) {
+                        window.showSavedStates();
+                    }
+                    break;
+                case 'delete':
+                    if (window.clearAllInputs) {
+                        window.clearAllInputs();
+                    }
+                    break;
+                case 'screenshot':
+                    handlePDFCreation();
+                    closeModal(); // Nur bei diesen Buttons Modal schließen
+                    break;
+                case 'mail':
+                    handleEmailFunction();
+                    closeModal();
+                    break;
+                case 'export':
+                    handleExportFunction();
+                    closeModal();
+                    break;
+                case 'import':
+                    handleImportFunction();
+                    closeModal();
+                    break;
+                default:
+                    console.log(`Unbekannte Aktion: ${this.id}`);
+                    closeModal();
+                    break;
+            }
+            
+            // Modal NICHT automatisch schließen für save/load/delete
+            // (diese schließen sich selbst nach erfolgreicher Aktion)
+        });
+    });
+    
+    // Funktionen für die Buttons definieren
+    function handlePDFCreation() {
+        console.log('PDF wird erstellt...');
+        // Hier deine PDF-Funktion implementieren
+            }
+    
+    function handleEmailFunction() {
+        console.log('E-Mail wird geöffnet...');
+        // Hier deine E-Mail-Funktion implementieren
+        
+        // Beispiel: Standard E-Mail Client öffnen
+        const subject = encodeURIComponent('Protokoll vom ' + new Date().toLocaleDateString('de-DE'));
+        const body = encodeURIComponent('Hallo,\n\nanbei das ausgefüllte Protokoll.\n\nViele Grüße');
+        const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+        
+        window.location.href = mailtoLink;
+    }
+    
+    function handleExportFunction() {
+        console.log('Export wird durchgeführt...');
+        // Hier deine Export-Funktion implementieren
+     
+    }
+    
+    function handleImportFunction() {
+        console.log('Import wird durchgeführt...');
+        // Hier deine Import-Funktion implementieren
+       
+    }
+}
+
+// Modal initialisieren
+document.addEventListener('DOMContentLoaded', initializeMenuModal);
+
+  
