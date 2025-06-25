@@ -1,36 +1,30 @@
-
-// script1.js
 setTimeout(function () {
     const heute = new Date();
     document.getElementById('datum').valueAsDate = heute;
 }, 100);
 
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Funktion zum Kopieren der Werte
+
     function copyInputValues() {
-        // Kopiere Straße/Objekt zu Objekt
+
         const strasseInput = document.getElementById('strasseeinzug');
         const objektClon = document.getElementById('objektclon');
         if (strasseInput && objektClon) {
             objektClon.value = strasseInput.value;
         }
 
-        // Kopiere PLZ/Ort zu Ort
         const plzInput = document.getElementById('plzeinzug');
         const ortClon = document.getElementById('ortclon');
         if (plzInput && ortClon) {
             ortClon.value = plzInput.value;
         }
 
-        // Kopiere Lage zu Lage
         const lageInput = document.getElementById('lageeinzug2');
         const lageClon = document.getElementById('lageclon');
         if (lageInput && lageClon) {
             lageClon.value = lageInput.value;
         }
 
-        // Kopiere Mieternummer zu Mieternummer
         const mieterInput = document.getElementById('mieterid');
         const mieterClon = document.getElementById('mietidtclon');
         if (mieterInput && mieterClon) {
@@ -38,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Observer für Änderungen am Mieternummer-Feld
     const inputFields = ['strasseeinzug', 'plzeinzug', 'lageeinzug2', 'mieterid'];
     inputFields.forEach(id => {
         const input = document.getElementById(id);
@@ -48,17 +41,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Spezieller Observer für die Mieternummer
     const mieterInput = document.getElementById('mieterid');
     if (mieterInput) {
-        // Observer für direkte Wertänderungen
+
         const observer = new MutationObserver(copyInputValues);
         observer.observe(mieterInput, {
             attributes: true,
             attributeFilter: ['value']
         });
 
-        // Fallback: Periodische Prüfung (falls nötig)
         let lastValue = mieterInput.value;
         setInterval(() => {
             if (mieterInput.value !== lastValue) {
@@ -68,41 +59,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
     }
 
-    // Initialer Aufruf
     copyInputValues();
 });
 
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Heutiges Datum ermitteln
+
     const today = new Date();
 
-    // Datum im Format YYYY-MM-DD für date-Input vorbereiten
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Monat ist 0-basiert
+    const month = String(today.getMonth() + 1).padStart(2, '0'); 
     const day = String(today.getDate()).padStart(2, '0');
 
     const todayFormatted = `${year}-${month}-${day}`;
 
-    // Datum in das Feld eintragen
     const dateInput = document.getElementById('datum2');
     if (dateInput) {
         dateInput.value = todayFormatted;
     }
 });
 
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    // 1. Namensvorschläge definieren
+
     const nameSuggestions = [
         "Christian Adler",
         "Oliver Acker",
@@ -113,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
         "Stefanie Muscat"
     ];
 
-    // 2. Input-Feld und Container finden
     const inputField = document.getElementById('firma1');
     if (!inputField) {
         console.error('Input-Feld mit ID "firma" nicht gefunden!');
@@ -126,11 +102,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    // 3. Vorschlagsliste erstellen
     const suggestionContainer = document.getElementById('name-suggestions-container');
 
-
-    // 4. Funktionen für die Vorschlagsanzeige
     function showSuggestions(suggestions) {
         suggestionContainer.innerHTML = '';
 
@@ -164,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
             : nameSuggestions.filter(name => name.toLowerCase().includes(input));
     }
 
-    // 5. Event-Handler
     inputField.addEventListener('focus', () => showSuggestions(getFilteredSuggestions()));
     inputField.addEventListener('input', () => showSuggestions(getFilteredSuggestions()));
 
@@ -174,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 6. CSS sicher einbinden
     if (!document.getElementById('suggestion-styles')) {
         const style = document.createElement('style');
         style.id = 'suggestion-styles';
@@ -211,25 +182,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Canvas und Kontext initialisieren
+
     const landlordCanvas = document.getElementById('landlord-signature-canvas');
     const landlordCtx = landlordCanvas.getContext('2d');
-    
-    // Canvas-Einstellungen
+
     landlordCtx.lineWidth = 7;
     landlordCtx.lineJoin = 'round';
     landlordCtx.lineCap = 'round';
     landlordCtx.strokeStyle = '#373d41';
-    
-    // Zeichnen-Variablen
+
     let landlordDrawing = false;
-    
-    // Zeichnen starten
+
     function startLandlordDrawing(e) {
         landlordDrawing = true;
         const rect = landlordCanvas.getBoundingClientRect();
@@ -239,8 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
         landlordCtx.moveTo(x - rect.left, y - rect.top);
         e.preventDefault();
     }
-    
-    // Zeichnen
+
     function drawLandlord(e) {
         if (!landlordDrawing) return;
         const rect = landlordCanvas.getBoundingClientRect();
@@ -250,13 +213,11 @@ document.addEventListener('DOMContentLoaded', function() {
         landlordCtx.stroke();
         e.preventDefault();
     }
-    
-    // Zeichnen beenden
+
     function stopLandlordDrawing() {
         landlordDrawing = false;
     }
-    
-    // Event Listeners für Canvas
+
     landlordCanvas.addEventListener('mousedown', startLandlordDrawing);
     landlordCanvas.addEventListener('mousemove', drawLandlord);
     landlordCanvas.addEventListener('mouseup', stopLandlordDrawing);
@@ -264,62 +225,46 @@ document.addEventListener('DOMContentLoaded', function() {
     landlordCanvas.addEventListener('touchstart', startLandlordDrawing);
     landlordCanvas.addEventListener('touchmove', drawLandlord);
     landlordCanvas.addEventListener('touchend', stopLandlordDrawing);
-    
-    // Löschen-Button
+
     document.getElementById('landlord-clear-signature').addEventListener('click', () => {
         landlordCtx.clearRect(0, 0, landlordCanvas.width, landlordCanvas.height);
     });
 });
 
-
-
-
-
-
-
-
-
-// Vereinfachte Modal Funktionalität
 function initializeMenuModal() {
     const modal = document.getElementById('menuModal');
     const openButton = document.getElementById('openMenuModal');
     const closeButton = document.getElementById('closeMenuModal');
-    
-    // Modal öffnen
+
     openButton.addEventListener('click', function() {
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
     });
-    
-    // Modal schließen
+
     function closeModal() {
         modal.classList.remove('show');
         document.body.style.overflow = '';
     }
-    
+
     closeButton.addEventListener('click', closeModal);
-    
-    // Modal schließen bei Klick außerhalb
+
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
         }
     });
-    
-    // Modal schließen mit ESC-Taste
+
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('show')) {
             closeModal();
         }
     });
-    
-    // Menu-Item-Buttons Event Listener - ERWEITERT
+
     const menuButtons = document.querySelectorAll('.menu-item-button');
     menuButtons.forEach(button => {
         button.addEventListener('click', function() {
             console.log(`Button clicked: ${this.id}`);
-            
-            // Spezifische Aktionen für jeden Button
+
             switch(this.id) {
                 case 'savelocal':
                     if (window.promptSaveName) {
@@ -338,7 +283,7 @@ function initializeMenuModal() {
                     break;
                 case 'screenshot':
                     handlePDFCreation();
-                    closeModal(); // Nur bei diesen Buttons Modal schließen
+                    closeModal(); 
                     break;
                 case 'mail':
                     handleEmailFunction();
@@ -357,42 +302,40 @@ function initializeMenuModal() {
                     closeModal();
                     break;
             }
-            
-            // Modal NICHT automatisch schließen für save/load/delete
-            // (diese schließen sich selbst nach erfolgreicher Aktion)
+
         });
     });
-    
-    // Funktionen für die Buttons definieren
+
     function handlePDFCreation() {
         console.log('PDF wird erstellt...');
-        // Hier deine PDF-Funktion implementieren
+
             }
-    
-    function handleEmailFunction() {
-        console.log('E-Mail wird geöffnet...');
-        // Hier deine E-Mail-Funktion implementieren
-        
-        // Beispiel: Standard E-Mail Client öffnen
-        const subject = encodeURIComponent('Protokoll vom ' + new Date().toLocaleDateString('de-DE'));
-        const body = encodeURIComponent('Hallo,\n\nanbei das ausgefüllte Protokoll.\n\nViele Grüße');
-        const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
-        
-        window.location.href = mailtoLink;
-    }
-    
-    function handleExportFunction() {
-        console.log('Export wird durchgeführt...');
-        // Hier deine Export-Funktion implementieren
-     
-    }
-    
-    function handleImportFunction() {
-        console.log('Import wird durchgeführt...');
-        // Hier deine Import-Funktion implementieren
-       
+
+function handleEmailFunction() {
+    console.log('E-Mail wird geöffnet...');
+
+    if (typeof showEmailMenu === 'function') {
+
+        const fileName = `Protokoll_${new Date().toLocaleDateString('de-DE').replace(/\./g, '_')}.pdf`;
+
+        showEmailMenu(fileName);
+    } else {
+        console.error('showEmailMenu Funktion nicht gefunden. Ist email.js geladen?');
+        alert('E-Mail-Funktion nicht verfügbar. Bitte stellen Sie sicher, dass email.js geladen ist.');
     }
 }
 
-// Modal initialisieren
+    function handleExportFunction() {
+        console.log('Export wird durchgeführt...');
+
+    }
+
+    function handleImportFunction() {
+        console.log('Import wird durchgeführt...');
+
+    }
+}
+
 document.addEventListener('DOMContentLoaded', initializeMenuModal);
+
+ 
