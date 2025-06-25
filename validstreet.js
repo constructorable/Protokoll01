@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
             padding: 12px 20px;
             border: none;
             border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 1rem;
+            font-weight: 300;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
@@ -327,3 +327,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funktion global verfügbar machen
     window.validateMoveOutTenants = validateMoveOutTenants;
 });
+ 
