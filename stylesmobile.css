@@ -450,6 +450,10 @@ select::-ms-expand {
     font-size: 1rem;
 }
 
+.load-btn {
+    font-size:1rem !important;
+}
+
 .bilder-thumbnails {
     display: flex;
     gap: 8px;
@@ -2421,6 +2425,8 @@ select:focus,
     padding: 4px 0;
 }
 
+
+
 input.no-spin::-webkit-outer-spin-button,
 input.no-spin::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -2551,10 +2557,9 @@ input.no-spin {
 
 #wandfarbe,
 #wandfarbebad {
-    margin-left: 0;
-    
+    margin-left: 0rem;
+   /*  width: 27rem; */
 }
-
 
 #fussbodenkue,
 #fussbodenbad {
@@ -2566,6 +2571,7 @@ input.no-spin {
 .fa-door-open {
     margin-right: 10px;
 }
+
 
 #addzimmert {
     width: 100%;
@@ -3036,6 +3042,7 @@ tr.bemerkung-row:nth-child(12)>td:nth-child(1) {
 
 #screenshot {
     background-color: #8c2323;
+    color: #fff;
 }
 
 .fa-file-pdf {
@@ -3052,6 +3059,7 @@ tr.bemerkung-row:nth-child(12)>td:nth-child(1) {
 
 #mail {
     background-color: rgb(22, 113, 19);
+    color:#fff;
 }
 
 .sticky {
@@ -3103,3 +3111,489 @@ tr.bemerkung-row:nth-child(12)>td:nth-child(1) {
 .color1 {
     font-weight:300;
 }
+
+/* table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+td {
+    text-align: left;
+    vertical-align: middle;
+} */
+
+.checkbox-cell {
+    text-align: center;
+    padding: 8px;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/* Menu Container */
+.menu-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.menu-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+}
+
+/* Menu Sections */
+.menu-section {
+    margin-bottom: 15px;
+}
+
+.menu-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.menu-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ccc 20%, #ccc 80%, transparent);
+    margin: 15px 0;
+}
+
+/* Button Styles */
+.menu-toggle {
+    background-color: #335d92 !important;
+    font-weight: 600;
+}
+
+.style-button {
+    background-color: #4a90a4 !important;
+}
+
+.primary-button {
+    background-color: #28a745 !important;
+}
+
+.pdf-button {
+    background-color: #8c2323 !important;
+}
+
+.mail-button {
+    background-color: #17a2b8 !important;
+}
+
+.submenu-toggle {
+    background-color: #6c757d !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.secondary-button {
+    background-color: #6f42c1 !important;
+}
+
+.danger-button {
+    background-color: #8c2323 !important;
+}
+
+/* Icon Styling */
+.button i {
+    margin-right: 6px;
+}
+
+.toggle-icon {
+    margin-left: auto;
+    margin-right: 0;
+    transition: transform 0.3s ease;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .menu-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .button {
+        min-width: 200px;
+        justify-content: flex-start;
+    }
+    
+    .submenu-toggle {
+        max-width: 250px;
+    }
+    
+    .button-text {
+        display: inline;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .menu-row {
+        gap: 10px;
+    }
+    
+    .button {
+        min-width: 140px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .menu-row {
+        gap: 15px;
+    }
+    
+    .button {
+        min-width: 160px;
+    }
+}
+
+/* Hover Effects */
+.button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+/* Animation for submenu */
+.submenu {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.submenu.show {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-container {
+    transform: scale(1);
+}
+
+/* Modal Header */
+.modal-header {
+    background: linear-gradient(135deg, #335d92, #4a7cb8);
+    color: white;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Modal Content */
+.modal-content {
+    padding: 25px;
+    max-height: calc(80vh - 80px);
+    overflow-y: auto;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #335d92;
+    margin: 0 0 8px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+/* Menu Item Buttons */
+.menu-item-button {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    color: #335d92;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    text-align: left;
+    width: 100%;
+    min-height: 55px;
+}
+
+.menu-item-button:hover {
+    background: #335d92;
+    color: white;
+    box-shadow: 0 4px 12px rgba(51, 93, 146, 0.3);
+}
+
+.menu-item-button:active {
+    transform: translateY(0);
+}
+
+.menu-item-button i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.menu-item-button.danger {
+    border-color: #8c2323;
+    color: #8c2323;
+}
+
+.menu-item-button.danger:hover {
+    background: #671818;
+    color: white;
+     box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+
+#mail:hover {
+  background-color: rgb(35, 128, 32);
+ 
+}
+
+#screenshot:hover {
+  background-color: #962f2f;
+}
+
+/* Trigger Buttons in Sticky */
+.menu-trigger {
+    background-color: #335d92 !important;
+    font-weight: 300;
+}
+
+.style-button {
+    background-color: #4a90a4 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-container {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .menu-item-button {
+        padding: 12px 16px;
+        min-height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-title {
+        font-size: 1.1rem;
+    }
+    
+    .menu-item-button {
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+}
+
+.fa-bars:before,
+.fa-navicon:before {
+  color: #fff !important;
+}
+
+
+
+
+
+
+/* Bessere Modal Animation - nur mit CSS */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    transform: scale(0.9) translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-container {
+    transform: scale(1) translateY(0);
+}
+
+  
