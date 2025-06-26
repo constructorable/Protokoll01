@@ -1,69 +1,119 @@
 document.addEventListener('DOMContentLoaded', function () {
     const bodenbelaege = [
-    "Holz - Parkett",
-    "Holz - Parkett, Eiche",
-    "Holz - Parkett, Esche",
-    "Holz - Parkett, Kiefer",
-    "Holz - Parkett, Meranti",
-    "Holz - Parkett, Lärche",
-    "Holz",
-    "Holz - Dielen",
-    "Holz - Dielen, Eiche",
-    "Holz - Dielen, Kiefer",
-    "Holz - Dielen, Lärche",
-    "Holz - Dielen, Esche",
-    "Holz - Dielen, Meranti",
-    "Holz - Dielen, Bambus",
-    "Laminat",
-    "Laminat - Optik Buche",
-    "Laminat - Optik Esche",
-    "Laminat - Optik Eiche",
-    "Laminat - Optik Kiefer",
-    "Laminat - Optik Stein",
-    "Laminat - Optik terrakotta",
-    "Laminat - Optik Bunt / Musterung",
-    "Fliesen",
-    "Fliesen - beige",
-    "Fliesen - weiß",
-    "Fliesen - schwarz",
-    "Fliesen - grau",
-    "Fliesen - blau",
-    "Fliesen - grün",
-    "Fliesen - terrakotta",
-    "Teppich",
-    "Teppich - grau",
-    "Teppich - blau",
-    "Teppich - beige",
-    "Teppich - schwarz",
-    "Teppich - gemustert",
-    "Vinyl",
-    "Vinyl - Optik Buche",
-    "Vinyl - Optik Esche",
-    "Vinyl - Optik Eiche",
-    "Vinyl - Optik Kiefer",
-    "Vinyl - Optik Stein",
-    "Vinyl - Optik terrakotta",
-    "Vinyl - Optik Bunt / Musterung",
-    "PVC",
-    "PVC - Optik Buche",
-    "PVC - Optik Esche",
-    "PVC - Optik Eiche",
-    "PVC - Optik Kiefer",
-    "PVC - Optik Stein",
-    "PVC - Optik terrakotta",
-    "PVC - Optik Bunt / Musterung",
-    "Beton",
-    "Betonoptik",
-    "Kork",
-    "Naturstein",
-    "Marmor",
-    "Granit",
-    "Linoleum",
-    "Terrazzo",
-    "Zement",
-    "Kunststoff",
-    "sonstiger Bodenbelag"
+        "Holz - Parkett",
+        "Holz - Parkett, Eiche",
+        "Holz - Parkett, Esche",
+        "Holz - Parkett, Kiefer",
+        "Holz - Parkett, Meranti",
+        "Holz - Parkett, Lärche",
+        "Holz",
+        "Holz - Dielen",
+        "Holz - Dielen, Eiche",
+        "Holz - Dielen, Kiefer",
+        "Holz - Dielen, Lärche",
+        "Holz - Dielen, Esche",
+        "Holz - Dielen, Meranti",
+        "Holz - Dielen, Bambus",
+        "Laminat",
+        "Laminat - Optik Buche",
+        "Laminat - Optik Esche",
+        "Laminat - Optik Eiche",
+        "Laminat - Optik Kiefer",
+        "Laminat - Optik Stein",
+        "Laminat - Optik terrakotta",
+        "Laminat - Optik Bunt / Musterung",
+        "Fliesen",
+        "Fliesen - beige",
+        "Fliesen - weiß",
+        "Fliesen - schwarz",
+        "Fliesen - grau",
+        "Fliesen - blau",
+        "Fliesen - grün",
+        "Fliesen - terrakotta",
+        "Teppich",
+        "Teppich - grau",
+        "Teppich - blau",
+        "Teppich - beige",
+        "Teppich - schwarz",
+        "Teppich - gemustert",
+        "Vinyl",
+        "Vinyl - Optik Buche",
+        "Vinyl - Optik Esche",
+        "Vinyl - Optik Eiche",
+        "Vinyl - Optik Kiefer",
+        "Vinyl - Optik Stein",
+        "Vinyl - Optik terrakotta",
+        "Vinyl - Optik Bunt / Musterung",
+        "PVC",
+        "PVC - Optik Buche",
+        "PVC - Optik Esche",
+        "PVC - Optik Eiche",
+        "PVC - Optik Kiefer",
+        "PVC - Optik Stein",
+        "PVC - Optik terrakotta",
+        "PVC - Optik Bunt / Musterung",
+        "Beton",
+        "Betonoptik",
+        "Kork",
+        "Naturstein",
+        "Marmor",
+        "Granit",
+        "Linoleum",
+        "Terrazzo",
+        "Zement",
+        "Kunststoff",
+        "sonstiger Bodenbelag"
     ];
+
+    // Funktion zur Sortierung der Bodenbeläge mit Priorisierung
+    function sortiereBodenbelaege(bodenListe) {
+        const hauptkategorien = [];
+        const restlicheBoeden = [];
+
+        // Zuerst die drei Hauptkategorien in gewünschter Reihenfolge
+        if (bodenListe.includes("Vinyl")) {
+            hauptkategorien.push("Vinyl");
+        }
+        if (bodenListe.includes("Holz - Parkett")) {
+            hauptkategorien.push("Holz - Parkett");
+        }
+        if (bodenListe.includes("Laminat")) {
+            hauptkategorien.push("Laminat");
+        }
+
+        // Alle anderen Einträge alphabetisch sortiert
+        bodenListe.forEach(boden => {
+            if (boden !== "Vinyl" && boden !== "Holz - Parkett" && boden !== "Laminat") {
+                restlicheBoeden.push(boden);
+            }
+        });
+
+        restlicheBoeden.sort();
+
+        return [...hauptkategorien, ...restlicheBoeden];
+    }
+
+    // Funktion zur Anzeige aller Vorschläge
+    function zeigeAlleVorschlaege(inputFeld, raum) {
+        const vorschlaegeContainer = document.getElementById(`boden-vorschlaege-${raum}`) || createVorschlaegeContainer(inputFeld, raum);
+        vorschlaegeContainer.innerHTML = '';
+
+        const sortierteBoeden = sortiereBodenbelaege(bodenbelaege);
+
+        sortierteBoeden.forEach(boden => {
+            const vorschlag = document.createElement('div');
+            vorschlag.textContent = boden;
+            vorschlag.classList.add('boden-vorschlag');
+            vorschlag.addEventListener('click', function () {
+                inputFeld.value = boden;
+                vorschlaegeContainer.style.display = 'none';
+            });
+            vorschlaegeContainer.appendChild(vorschlag);
+        });
+
+        positioniereVorschlaege(vorschlaegeContainer, inputFeld);
+        vorschlaegeContainer.style.display = 'block';
+    }
 
     // Funktion zur Initialisierung der Bodenvorschläge für ein bestimmtes Input
     function initBodenVorschlaege(inputFeld, raum) {
@@ -81,7 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 );
 
                 if (passenderBoden.length > 0) {
-                    passenderBoden.forEach(boden => {
+                    const sortierteBoedenGefiltert = sortiereBodenbelaege(passenderBoden);
+
+                    sortierteBoedenGefiltert.forEach(boden => {
                         const vorschlag = document.createElement('div');
                         vorschlag.textContent = boden;
                         vorschlag.classList.add('boden-vorschlag');
@@ -103,11 +155,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         inputFeld.addEventListener('focus', function () {
+            // Andere Vorschläge-Container schließen
             document.querySelectorAll('[id^="boden-vorschlaege-"]').forEach(container => {
                 if (container.id !== `boden-vorschlaege-${raum}`) {
                     container.style.display = 'none';
                 }
             });
+
+            // Alle Vorschläge anzeigen, wenn das Feld leer ist
+            if (this.value.length === 0) {
+                zeigeAlleVorschlaege(this, raum);
+            }
+        });
+
+        // Click-Event für das gleiche Verhalten wie focus
+        inputFeld.addEventListener('click', function () {
+            if (this.value.length === 0) {
+                zeigeAlleVorschlaege(this, raum);
+            }
         });
     }
 
@@ -153,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Schließen der Vorschläge bei Klick außerhalb
     document.addEventListener('click', function (e) {
-        if (!e.target.classList.contains('boden-input') && !e.target.matches('[id^="fussbodenzimm"]')) {
+        if (!e.target.classList.contains('boden-input') && !e.target.matches('[id^="fussbodenzimm"]') && !e.target.matches('[id^="fussboden"]')) {
             document.querySelectorAll('[id^="boden-vorschlaege-"]').forEach(container => {
                 container.style.display = 'none';
             });
@@ -176,3 +241,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+  
